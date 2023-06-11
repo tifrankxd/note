@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #fff;
+    background: #000;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("snow.gif") repeat 0 0;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+
+.centered-form {
+    width: 300px;
+    padding: 20px;
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+.centered-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #00ff00;
+}
+
+.centered-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #00ff00;
+}
+
+.centered-form input[type="password"],
+.centered-form input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    background: rgba(0, 255, 0, 0.1);
+    color: #fff;
+}
+
+.centered-form input[type="submit"] {
+    background-color: #00ff00;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.centered-form input[type="submit"]:hover {
+    background-color: #00e600;
+}
+
+.centered-form p {
+    text-align: center;
+}
+
+.centered-form p a {
+    color: #00ff00;
+    text-decoration: none;
+}
+
+.bgAnimation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    background: #1d1d1d;
+    filter: saturate(2);
+    overflow: hidden;
+}
+
+.colorBox {
+    z-index: 2;
+    filter: brightness(1.1);
+    transition: 2s ease;
+    position: relative;
+    margin: 2px;
+    background: #1d1d1d;
+}
+
+.colorBox:hover {
+    background: #00ff00;
+    transition-duration: 0s;
+}
