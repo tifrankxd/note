@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+    padding: 0px 50px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    position: relative;
+    height: 200px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background-image: linear-gradient(45deg, #fffeff, #00ffff, #0016df);
+    z-index: -1;
+    filter: blur(20px);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.card-content h2 {
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.card-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(15, 0, 84, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .card-border {
+    opacity: 1;
+}
+.card {
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: rotateX(10deg) rotateY(10deg);
+}
+
+.card:active {
+    transform: rotateX(20deg) rotateY(20deg);
+}
+
+.card-content i {
+    font-size: 30px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-content i:hover {
+    transform: scale(1.2);
+}

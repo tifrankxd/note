@@ -38,7 +38,7 @@ if (isset($_POST['forgot_password'])) {
 <html>
 <head>
     <title>Olvidé mi contraseña</title>
-    <link rel="stylesheet" href="t.css">
+    <link rel="stylesheet" href="../css/t.css">
 </head>
 <body>
     <div class="container">

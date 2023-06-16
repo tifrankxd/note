@@ -45,7 +45,7 @@ if (isset($_SESSION['reset_username'])) {
 <html>
 <head>
     <title>Restablecer contraseña</title>
-    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="../css/reset.css">
 </head>
 <body>
     <div class="container">

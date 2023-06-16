@@ -30,10 +30,10 @@ if (isset($_POST['submit'])) {
 
         // Redirige al usuario a la página correspondiente según su perfil
         if ($row['profile'] == 'instructor') {
-            header("Location: instructor.php");
+            header("Location: ../instructor/instructor.php");
             exit();
         } elseif ($row['profile'] == 'aprendiz') {
-            header("Location: aprendiz.php");
+            header("Location: ../aprendiz/aprendiz.php");
             exit();
         }
     } else {
@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
 <html>
 <head>
     <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="notebook.png" type="image/png">
 
 </head>
