@@ -5,7 +5,7 @@ session_start();
 $host = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "rest";
+$dbName = "rist";
 
 // Conecta a la base de datos
 $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
@@ -17,6 +17,7 @@ if ($conn->connect_error) {
 if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $nombre = $_POST['nombre'];
     $profile = $_POST['profile'];
 
     // Verifica si el nombre de usuario ya está en uso
@@ -31,10 +32,10 @@ if (isset($_POST['register'])) {
         if ($profile === "aprendiz") {
             // Si el perfil es "aprendiz", se solicita el grado
             $grade = $_POST['grade'];
-            $insertQuery = "INSERT INTO users (username, password, profile, grade) VALUES ('$username', '$password', '$profile', '$grade')";
+            $insertQuery = "INSERT INTO users (username, password, nombre, profile, grade) VALUES ('$username', '$password', '$nombre', '$profile', '$grade')";
         } else {
             // Si el perfil es "instructor", no se solicita el grado
-            $insertQuery = "INSERT INTO users (username, password, profile) VALUES ('$username', '$password', '$profile')";
+            $insertQuery = "INSERT INTO users (username, password, nombre, profile) VALUES ('$username', '$password', '$nombre', '$profile')";
         }
 
         if ($conn->query($insertQuery) === TRUE) {
@@ -65,6 +66,9 @@ if (isset($_POST['register'])) {
         
         <label>Contraseña:</label>
         <input type="password" name="password" required><br><br>
+
+        <label>Nombre personal</label>
+        <input type="text" name="nombre" required><br><br>
         
         <label>Perfil:</label>
         <select name="profile" id="profileSelect">

@@ -5,7 +5,7 @@ session_start();
 $host = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "rest";
+$dbName = "rist";
 
 // Conecta a la base de datos
 $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
