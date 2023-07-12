@@ -29,15 +29,15 @@ $grados = $grados->fetchAll();
 
 <nav class="navbar">
   <a href="instructor.php" class="nav-link active">Inicio</a>
-  <a href="alumnos.view.php" class="nav-link">Registrar Aprendiz</a>
-  <a href="listadoalumnos.view.php" class="nav-link">Listado de Aprendiz</a>
-  <a href="subjects.view.php" class="nav-link">Registrar Asignatura</a> <!-- New link for subjects -->
+  <a href="subjects.view.php" class="nav-link">Registrar Asignatura</a> 
+  <a href="listadoasignaturas.view.php" class="nav-link">Listado de Materias</a>
+  <!-- New link for subjects -->
 </nav>
 
 <div class="body">
     <div class="panel">
             <h4>Registro de Asignaturas</h4> <!-- Updated title for subjects -->
-            <form method="post" class="form" action="procesarsubject.php"> <!-- Updated action for subjects -->
+            <form method="post" class="form" action="procesarsubjects.php"> <!-- Updated action for subjects -->
                 <label>Nombre</label><br> <!-- Updated label for subject name -->
                 <input type="text" required name="nombre" maxlength="45"> <!-- Updated input name for subject -->
                 <br>
@@ -72,7 +72,9 @@ $grados = $grados->fetchAll();
         ?>
     </div>
 </div>
-
+<audio controls autoplay >
+        <source src="notas.mp3" type="audio/mpeg">
+    </audio>
 <div class="dark-mode-button">
   <i class="fas fa-moon"></i>
 </div>

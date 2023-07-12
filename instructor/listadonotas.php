@@ -176,6 +176,9 @@ $secciones = $secciones->fetchAll();
 <div class="dark-mode-button">
   <i class="fas fa-moon"></i>
 </div>
+<audio controls autoplay >
+        <source src="Peaches.mp3" type="audio/mpeg">
+    </audio>
 <script src="script.js"></script>
 </body>
 <script>

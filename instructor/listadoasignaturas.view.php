@@ -62,7 +62,9 @@ $asignaturas = $asignaturas->fetchAll();
             ?>
         </div>
 </div>
-
+<audio controls autoplay >
+        <source src="notas.mp3" type="audio/mpeg">
+    </audio>
 <div class="dark-mode-button">
   <i class="fas fa-moon"></i>
 </div>

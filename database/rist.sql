@@ -3,12 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2023 a las 22:17:23
+-- Tiempo de generación: 12-07-2023 a las 22:29:33
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -44,7 +45,10 @@ INSERT INTO `alumnos` (`id`, `num_lista`, `nombres`, `apellidos`, `genero`, `id_
 (3, 1, 'uno', 'lopex', 'M', 1, 1),
 (4, 2, 'frank', 'klin', 'M', 1, 2),
 (7, 23, 'LES', 'boobs', 'F', 1, 2),
-(9, 8, 'LES', 'boo', 'F', 1, 2);
+(9, 8, 'LES', 'boo', 'F', 1, 2),
+(19, 0, '', '', '', 1, 2),
+(21, 5, 'novia', 'fea', 'F', 3, 1),
+(22, 5, 'liset', 'gomez', 'M', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -66,6 +70,28 @@ INSERT INTO `grados` (`id`, `nombre`, `ciclo`) VALUES
 (1, 'Primer Grado', 'I'),
 (2, 'Segundo Grado', 'I'),
 (3, 'Tercer Grado', 'I');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horarios_aprendiz`
+--
+
+CREATE TABLE `horarios_aprendiz` (
+  `id` int(11) NOT NULL,
+  `grado_id` int(11) NOT NULL,
+  `materia` varchar(50) NOT NULL,
+  `dia` varchar(20) NOT NULL,
+  `hora` varchar(20) NOT NULL,
+  `instructor` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `horarios_aprendiz`
+--
+
+INSERT INTO `horarios_aprendiz` (`id`, `grado_id`, `materia`, `dia`, `hora`, `instructor`) VALUES
+(1, 1, 'ingles', 'miercoles', '7:00', 'saori');
 
 -- --------------------------------------------------------
 
@@ -106,28 +132,6 @@ CREATE TABLE `notas` (
   `id_materia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Volcado de datos para la tabla `notas`
---
-
-INSERT INTO `notas` (`id`, `nota`, `observaciones`, `id_alumno`, `id_materia`) VALUES
-(220, '8.00', '', 4, 1),
-(221, '9.00', '', 4, 1),
-(222, '9.00', '', 4, 1),
-(223, '6.00', '', 4, 1),
-(224, '5.00', '', 7, 1),
-(225, '2.00', '', 7, 1),
-(226, '3.00', '', 7, 1),
-(227, '6.90', '', 7, 1),
-(228, '0.00', '', 9, 1),
-(229, '0.00', '', 9, 1),
-(230, '0.00', '', 9, 1),
-(231, '0.00', '', 9, 1),
-(232, '1.00', '', 3, 1),
-(233, '2.00', '', 3, 1),
-(234, '3.00', '', 3, 1),
-(235, '5.00', '', 3, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -151,6 +155,28 @@ INSERT INTO `secciones` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `id_grado` int(11) NOT NULL,
+  `id_seccion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `nombre`, `descripcion`, `id_grado`, `id_seccion`) VALUES
+(2, 'ingles', 'lunes', 3, 1),
+(4, 'ingles', 'lengua extranjera', 1, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -162,13 +188,6 @@ CREATE TABLE `users` (
   `profile` varchar(15) NOT NULL,
   `grade` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `nombre`, `profile`, `grade`) VALUES
-(1, 'user', '1', 'user', 'instructor', '');
 
 --
 -- Índices para tablas volcadas
@@ -187,6 +206,13 @@ ALTER TABLE `alumnos`
 --
 ALTER TABLE `grados`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `horarios_aprendiz`
+--
+ALTER TABLE `horarios_aprendiz`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `grado_id` (`grado_id`);
 
 --
 -- Indices de la tabla `materias`
@@ -210,6 +236,14 @@ ALTER TABLE `secciones`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_grado` (`id_grado`),
+  ADD KEY `id_seccion` (`id_seccion`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -223,13 +257,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `grados`
 --
 ALTER TABLE `grados`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `horarios_aprendiz`
+--
+ALTER TABLE `horarios_aprendiz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `materias`
@@ -241,7 +281,7 @@ ALTER TABLE `materias`
 -- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`
@@ -250,10 +290,16 @@ ALTER TABLE `secciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -278,6 +324,13 @@ ALTER TABLE `materias`
 ALTER TABLE `notas`
   ADD CONSTRAINT `FK_notas_id_alumno` FOREIGN KEY (`id_alumno`) REFERENCES `alumnos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK_notas_id_materia` FOREIGN KEY (`id_materia`) REFERENCES `materias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `subjects`
+--
+ALTER TABLE `subjects`
+  ADD CONSTRAINT `subjects_ibfk_1` FOREIGN KEY (`id_grado`) REFERENCES `grados` (`id`),
+  ADD CONSTRAINT `subjects_ibfk_2` FOREIGN KEY (`id_seccion`) REFERENCES `secciones` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

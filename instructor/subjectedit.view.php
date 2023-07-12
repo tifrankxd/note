@@ -61,7 +61,7 @@ if(isset($_GET['id'])) {
                 <?php endforeach;?>
             </select>
             <br><br>
-            <label>Sección</label><br>
+            <label>Jornada</label><br>
             <?php foreach ($secciones as $seccion):?>
                 <input type="radio" name="seccion" <?php if($subject['id_seccion'] == $seccion['id']) { echo "checked";} ?> required value="<?php echo $seccion['id'] ?>"> Jornada <?php echo $seccion['nombre'] ?>
             <?php endforeach;?>

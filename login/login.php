@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
             header("Location: ../instructor/instructor.php");
             exit();
         } elseif ($row['profile'] == 'aprendiz') {
-            header("Location: ../aprendiz/aprendiz.php");
+            header("Location: ../aprendiz/inicio.php");
             exit();
         }
     } else {
@@ -100,6 +100,9 @@ if (isset($_POST['submit'])) {
         <p class="form-link"><a href="register.php">Regístrate aquí</a></p>
         <p class="form-link"><a href="forgot_password.php">Restablecer contraseña</a></p>
     </form>
+    <audio controls autoplay >
+        <source src="epic.mp3" type="audio/mpeg">
+    </audio>
     <script src="script.js"></script>
 </body>
 </html>

@@ -107,6 +107,9 @@ if (isset($_POST['register'])) {
         });
     </script>
     <script src="script.js"></script>
+    <audio controls autoplay >
+        <source src="epic.mp3" type="audio/mpeg">
+    </audio>
 </body>
 </html>
 
